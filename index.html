@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="MATH.css">
+<link rel="icon" href="https://i.ibb.co/p12wVb0/unnamed.png">
+<h1 id="hea1">Math Worksheet Generator</h1>
+<head><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" 
+  integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="MATH.css">
+<link rel="icon" href="https://i.ibb.co/p12wVb0/unnamed.png">
+<title>MathGen</title>
+</head>
+<input  id="download-button" type="button" class="value56" value="" >
+<script>document.getElementById("download-button").style.visibility = "hidden"</script>
+
+<div class="value77" type="value"id="user33"></div>
+<script>function register(main,second,third){
+    console.log(main)
+    console.log(second)
+    document.getElementById("hea1").textContent="Working on Problems of kind:, ".concat(main)
+    document.getElementById("clickMe").value="working..."
+    document.getElementById("user1").value=""
+    document.getElementById("user2").value=""
+    document.getElementById("user3").value=""
+    
+    localStorage.setItem('kind', main);
+    localStorage.setItem('dig',second)
+    let i = 0
+    localStorage.setItem("stuff","")
+    if(main=="+"){
+        let base = localStorage.getItem("stuff")
+        while(i<(third)){
+            const min = (Math.pow(10,(second-1)));
+            const max = (Math.pow(10,second)-1);
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const randomNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(randomNumber);
+            console.log(randomNumber2)
+            const prob = ((randomNumber.toString()).concat("+")).concat((randomNumber2.toString()))
+            i=i+1
+            console.log(prob)
+            
+            base=base.concat("  ")
+            base=base.concat(prob)
+            console.log(base)
+            base=base.concat("=__________")
+        }
+      localStorage.setItem("downloadpdf",base) 
+    }
+    else if(main=="-"){
+        let base = localStorage.getItem("stuff")
+        while(i< (third+1)){
+            const min = (Math.pow(10,(second-1)));
+            const max = (Math.pow(10,second)-1);
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const randomNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(randomNumber);
+            console.log(randomNumber2)
+            const prob = ((randomNumber.toString()).concat("-")).concat((randomNumber2.toString()))
+            i=i+1
+            console.log(prob)
+            
+            base=base.concat(", ")
+            base=base.concat(prob)
+            base=base.concat("=__________")
+            console.log(base)
+        }
+      localStorage.setItem("downloadpdf",base) 
+    }
+    else if(main=="*"){
+        let base = localStorage.getItem("stuff")
+        while(i< (third)){
+            const min = (Math.pow(10,(second-1)));
+            const max = (Math.pow(10,second)-1);
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const randomNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(randomNumber);
+            console.log(randomNumber2)
+            const prob = ((randomNumber.toString()).concat("*")).concat((randomNumber2.toString()))
+            
+            console.log(prob)
+            
+            base=base.concat(",   ")
+            base=base.concat(prob)
+            base=base.concat("=__________")
+            console.log(base)
+            i=i+1
+        }
+      localStorage.setItem("downloadpdf",base) 
+    }
+    else if(main=="/"){
+        let base = localStorage.getItem("stuff")
+        while(i< (third)){
+            const min = (Math.pow(10,(second-1)));
+            const max = (Math.pow(10,second)-1);
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const randomNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(randomNumber);
+            console.log(randomNumber2)
+            const prob = ((randomNumber.toString()).concat("/")).concat((randomNumber2.toString()))
+           
+            console.log(prob)
+            
+            base=base.concat(",     ")
+            base=base.concat(prob)
+            base=base.concat("=__________")
+            console.log(base)
+            i=i+1
+        }
+      localStorage.setItem("downloadpdf",base) 
+      
+    }
+    //window.location.href = 'testpdf.html';
+    document.getElementById("user33").textContent=(localStorage.getItem("downloadpdf"))
+    document.getElementById("download-button").value="Download"
+    
+    document.getElementById("download-button").style.visibility = "visible"
+
+}
+    localStorage.setItem("downloadpdf",document.getElementById("hea1").innerHTML)
+   
+
+</script>
+<script>
+  const button = document.getElementById('download-button');
+  
+  function generatePDF() {
+      // Choose the element that your content will be rendered to.
+      const element = localStorage.getItem("downloadpdf");
+      
+      // Choose the element and save the PDF for your user.
+      html2pdf().from(localStorage.getItem("downloadpdf")).save();
+  
+  }
+
+  button.addEventListener('click', generatePDF);
+  
+</script>
+
+<input class="value" type="value"id="user1"placeholder="Input kind of worksheet(*,/,+,-)">
+<input class="value" type="valuex"id="user2"placeholder="Enter number of digits(Recommended<5)">
+<input class="value" type="valuey"id="user3"placeholder="Enter number of problems(Max: 250)">
+
+<input id="clickMe" class="value2" type="button" value="Press to submit"   onclick="register(document.getElementById('user1').value,document.getElementById('user2').value,document.getElementById('user3').value)">
